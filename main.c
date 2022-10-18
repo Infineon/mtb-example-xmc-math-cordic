@@ -44,7 +44,7 @@
 #include "cybsp.h"
 #include "cy_utils.h"
 #include "xmc_math.h"
-#include "retarget_io.h"
+#include "cy_retarget_io.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -195,8 +195,8 @@ int main(void)
     /* Enable global interrupts */
     __enable_irq();
 
-    /* Initialize printf retarget */
-    retarget_io_init();
+    /* Initialize retarget-io to use the debug UART port */
+    cy_retarget_io_init(CYBSP_DEBUG_UART_HW);
 
     /* \x1b[2J\x1b[;H - ANSI ESC sequence to clear screen. */
     printf("\x1b[2J\x1b[;H");
